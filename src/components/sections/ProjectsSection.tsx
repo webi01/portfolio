@@ -144,10 +144,10 @@ export function ProjectsSection() {
       {/* Watermark */}
       <span
         aria-hidden
-        className="pointer-events-none select-none absolute -top-4 right-0 font-serif font-black leading-none text-foreground/[0.025]"
+        className="pointer-events-none select-none absolute -top-4 -left-4 font-serif font-black leading-none text-foreground/[0.025]"
         style={{ fontSize: "clamp(10rem, 28vw, 20rem)", zIndex: 0 }}
       >
-        04
+        05
       </span>
 
       <div className="container mx-auto px-4 md:px-8 lg:px-12 relative z-10">

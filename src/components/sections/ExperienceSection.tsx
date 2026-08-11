@@ -5,10 +5,20 @@ import { MapPin } from "lucide-react"
 
 const experiences = [
   {
+    role: "Full Stack Developer",
+    company: "Synheart",
+    location: "Remote",
+    date: "2026",
+    current: false,
+    description:
+      "Built product surfaces for a privacy-first human-state platform that turns biosignals into structured signals like stress, focus, and cognitive load. Developed platform.synheart.ai — the organization dashboard where teams manage their org, members, and access — and worked on Life, the companion desktop app that captures user state and hosts real-time chat.",
+    skills: ["Next.js", "TypeScript", "Tailwind CSS", "Desktop App", "Real-time Chat", "Dashboards"],
+  },
+  {
     role: "Freelance Full Stack Developer",
     company: "Tech for Africa",
     location: "Remote",
-    date: "2025 — Present",
+    date: "2025",
     current: true,
     description:
       "Built and maintained modern, responsive web interfaces using Next.js and Tailwind CSS. Focused on component reusability, performance optimization, and seamless API integration to deliver high-quality user experiences for African-focused tech initiatives.",
@@ -23,16 +33,6 @@ const experiences = [
     description:
       "Developed full-stack web applications using Next.js, Node.js, Express, and MongoDB. Built responsive UIs, implemented RESTful APIs, handled database operations, and collaborated with team members to deliver clean, maintainable solutions.",
     skills: ["Next.js", "Node.js", "MongoDB", "Express", "REST APIs", "Git"],
-  },
-  {
-    role: "Full Stack Software Engineering Student",
-    company: "ALX Africa",
-    location: "Remote",
-    date: "2021 — 2022",
-    current: false,
-    description:
-      "Completed an intensive, project-based software engineering program specializing in full-stack development. Mastered C, Python, JavaScript, Git, Linux, backend architecture, and modern web technologies through real-world projects.",
-    skills: ["C", "Python", "JavaScript", "Git", "Linux", "Backend Development"],
   },
 ]
 

@@ -76,7 +76,9 @@ export function AboutSection() {
 
             <div className="space-y-5 text-base text-muted-foreground leading-relaxed">
               <p>
-                I&apos;m a Full Stack Developer with a passion for building impactful digital
+                I&apos;m a Computer Science and Engineering graduate from Adama Science and
+                Technology University, where I finished with Very High Distinction, and a
+                Full Stack Developer with a passion for building impactful digital
                 products. I specialize in crafting fast, accessible, and beautifully
                 designed web applications — from the API layer all the way to the UI.
               </p>

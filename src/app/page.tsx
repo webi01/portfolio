@@ -7,6 +7,7 @@ import { ProjectsSection } from "@/components/sections/ProjectsSection"
 import { ContactSection } from "@/components/sections/ContactSection"
 
 import { ExperienceSection } from "@/components/sections/ExperienceSection"
+import { EducationSection } from "@/components/sections/EducationSection"
 
 export default function Home() {
   const jsonLd = {
@@ -24,7 +25,17 @@ export default function Home() {
     "worksFor": {
       "@type": "Organization",
       "name": "Tech for Africa"
-    }
+    },
+    "alumniOf": [
+      {
+        "@type": "CollegeOrUniversity",
+        "name": "Adama Science and Technology University"
+      },
+      {
+        "@type": "EducationalOrganization",
+        "name": "ALX Africa"
+      }
+    ]
   }
 
   return (
@@ -37,6 +48,7 @@ export default function Home() {
       <HeroSection />
       <AboutSection />
       <ExperienceSection />
+      <EducationSection />
       <SkillsSection />
       <ProjectsSection />
       <ContactSection />

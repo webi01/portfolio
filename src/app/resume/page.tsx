@@ -38,9 +38,20 @@ const contact = {
 
 const experience = [
   {
+    role: "Full Stack Developer",
+    company: "Synheart",
+    period: "2026",
+    location: "Remote",
+    points: [
+      "Built platform.synheart.ai, the organization dashboard where teams manage their org, members, and access.",
+      "Worked on Life, the companion desktop app that captures user state and hosts real-time chat.",
+      "Shipped product surfaces for a privacy-first platform turning biosignals into stress, focus, and cognitive-load signals.",
+    ],
+  },
+  {
     role: "Freelance Full Stack Developer",
     company: "Tech for Africa",
-    period: "2025 — Present",
+    period: "2025",
     location: "Remote",
     points: [
       "Built and maintained modern, responsive web interfaces using Next.js and Tailwind CSS.",
@@ -57,17 +68,6 @@ const experience = [
       "Built full-stack web applications with Next.js, Node.js, Express, and MongoDB.",
       "Implemented RESTful APIs, handled database operations, and shipped responsive UIs.",
       "Collaborated with team members to deliver clean, maintainable solutions.",
-    ],
-  },
-  {
-    role: "Full Stack Software Engineering Student",
-    company: "ALX Africa",
-    period: "2021 — 2022",
-    location: "Remote",
-    points: [
-      "Completed an intensive, project-based software engineering program specializing in full-stack development.",
-      "Gained hands-on experience in C, Python, JavaScript, Linux, and backend architecture.",
-      "Delivered real-world projects and collaborated with peers across distributed teams.",
     ],
   },
 ];
@@ -103,39 +103,27 @@ const projects = [
   },
 ];
 
-const skills = {
-  Frontend: [
-    "React",
-    "Next.js",
-    "TypeScript",
-    "Tailwind CSS",
-    "Framer Motion",
-    "Flutter",
-    "Dart",
-    "HTML & CSS",
-  ],
-  Backend: [
-    "Node.js",
-    "Express",
-    "Python",
-    "PostgreSQL",
-    "MongoDB",
-    "REST APIs",
-    "GraphQL",
-    "JWT",
-  ],
-  "Tools & Workflow": [
-    "Git",
-    "Docker",
-    "Linux",
-    "Figma",
-    "CI/CD",
-    "Agile",
-    "UI/UX Design",
-    "VS Code",
-    "Vercel",
-  ],
-};
+const education = [
+  {
+    degree: "BSc, Computer Science & Engineering",
+    school: "Adama Science and Technology University",
+    period: "2022 — 2026 · Ethiopia",
+    note: "Graduated with Very High Distinction. Coursework across algorithms, data structures, operating systems, databases, computer networks, and software engineering.",
+  },
+  {
+    degree: "Competitive Programming & Algorithms",
+    school: "A2SV — Africa to Silicon Valley",
+    period: "2024 · Ethiopia",
+    note: "Intensive, interview-focused training in data structures and algorithms, with daily LeetCode problem solving, complexity analysis, and technical interview preparation.",
+  },
+  {
+    degree: "Full Stack Software Engineering",
+    school: "ALX Africa",
+    period: "2021 — 2022 · Remote",
+    note: "Intensive 12-month program in systems programming, full-stack web development, and algorithms.",
+  },
+];
+
 
 export default function ResumePage() {
   return (
@@ -215,20 +203,19 @@ export default function ResumePage() {
         <section className="mb-5 cv-section">
           <SectionHeading>Summary</SectionHeading>
           <p className="text-[11.5px] text-[#3A3330] leading-relaxed">
-            I&apos;m a Full Stack Developer with a passion for building
-            impactful digital products. I specialize in crafting fast,
-            accessible, and beautifully designed web applications — from the API
-            layer to the UI. With experience across e-commerce, B2B
-            marketplaces, and consumer apps, I bring both technical depth and
-            product thinking to every project. I also contribute to open source
-            and sharpen my problem-solving skills on LeetCode.
+            Computer Science &amp; Engineering graduate (Very High Distinction,
+            Adama Science and Technology University) and a Full Stack Developer
+            who builds fast, accessible, and beautifully designed web
+            applications — from the API layer to the UI. My work spans AI and
+            human-state platforms, B2B marketplaces, e-commerce, and desktop
+            apps.
           </p>
         </section>
 
         {/* ── Experience ── */}
         <section className="mb-5 cv-section">
           <SectionHeading>Experience</SectionHeading>
-          <div className="space-y-4">
+          <div className="space-y-3">
             {experience.map((exp) => (
               <div key={exp.company}>
                 <div className="flex items-baseline justify-between mb-0.5">
@@ -298,46 +285,32 @@ export default function ResumePage() {
           </div>
         </section>
 
-        {/* ── Skills ── */}
-        <section className="mb-5 cv-section">
-          <SectionHeading>Skills</SectionHeading>
-          <div className="space-y-1.5">
-            {Object.entries(skills).map(([category, items]) => (
-              <div key={category} className="flex gap-3">
-                <span className="text-[10.5px] font-bold text-[#C44B4B] w-28 shrink-0 pt-0.5">
-                  {category}
-                </span>
-                <p className="text-[11px] text-[#3A3330] leading-snug">
-                  {items.join("  ·  ")}
+        {/* ── Education ── */}
+        <section className="cv-section">
+          <SectionHeading>Education</SectionHeading>
+          <div className="space-y-2">
+            {education.map((edu) => (
+              <div key={edu.school}>
+                <div className="flex items-baseline justify-between">
+                  <div>
+                    <span className="text-[12.5px] font-bold text-[#100F0F]">
+                      {edu.degree}
+                    </span>
+                    <span className="text-[11px] text-[#C44B4B] font-semibold">
+                      {" "}
+                      · {edu.school}
+                    </span>
+                  </div>
+                  <span className="text-[10.5px] text-[#6A625D] whitespace-nowrap ml-4 shrink-0">
+                    {edu.period}
+                  </span>
+                </div>
+                <p className="mt-0.5 text-[11px] text-[#3A3330] leading-snug">
+                  {edu.note}
                 </p>
               </div>
             ))}
           </div>
-        </section>
-
-        {/* ── Education ── */}
-        <section>
-          <SectionHeading>Education</SectionHeading>
-          <div className="flex items-baseline justify-between">
-            <div>
-              <span className="text-[12.5px] font-bold text-[#100F0F]">
-                Full Stack Software Engineering
-              </span>
-              <span className="text-[11px] text-[#C44B4B] font-semibold">
-                {" "}
-                · ALX Africa
-              </span>
-            </div>
-            <span className="text-[10.5px] text-[#6A625D] whitespace-nowrap ml-4">
-              2021 — 2022 · Remote
-            </span>
-          </div>
-          <p className="mt-1 text-[11px] text-[#3A3330] leading-snug">
-            Intensive 12-month software engineering program covering systems
-            programming, full-stack web development, algorithms, and real-world
-            project delivery. Equivalent to a professional engineering bootcamp
-            with rigorous peer evaluation.
-          </p>
         </section>
       </div>
 
