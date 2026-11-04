@@ -1,156 +1,87 @@
 "use client"
 
-import { motion } from "framer-motion"
 import Image from "next/image"
+import { motion } from "framer-motion"
+import { SectionHeading } from "@/components/SectionHeading"
+import { stats } from "@/lib/content"
 import { links } from "@/lib/site"
-
-const stats = [
-  { value: "4+", label: "Years of experience" },
-  { value: "20+", label: "Projects shipped" },
-  { value: "3", label: "Companies worked" },
-]
 
 export function AboutSection() {
   return (
-    <section id="about" className="py-16 sm:py-24 lg:py-32 bg-secondary/30 relative overflow-hidden">
+    <section id="about" className="py-20 sm:py-28 lg:py-36">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <SectionHeading index="03" title="About" />
 
-      {/* Giant watermark number */}
-      <span
-        aria-hidden
-        className="pointer-events-none select-none absolute -top-4 -left-4 font-serif font-black leading-none text-foreground/[0.025]"
-        style={{ fontSize: "clamp(10rem, 28vw, 20rem)" }}
-      >
-        01
-      </span>
-
-      <div className="container mx-auto px-4 md:px-8 lg:px-12 relative z-10">
-
-        {/* Section label */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="mb-16"
-        >
-          <p className="text-xs font-bold tracking-[0.25em] uppercase text-muted-foreground mb-3">
-            About
-          </p>
-          <div className="h-px bg-border" />
-        </motion.div>
-
-        <div className="grid md:grid-cols-2 gap-10 lg:gap-28 items-start">
-
-          {/* Photo with crimson offset treatment */}
+        <div className="grid gap-10 md:grid-cols-[5fr_7fr] lg:gap-20 items-start">
           <motion.div
-            initial={{ opacity: 0, x: -24 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             viewport={{ once: true }}
-            className="relative self-start"
+            className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-brand"
           >
-            {/* Crimson offset shadow */}
-            <div className="absolute inset-0 translate-x-4 translate-y-4 rounded-2xl bg-primary/15 border border-primary/20" />
-            <div className="relative aspect-[3/4] sm:aspect-[4/5] overflow-hidden rounded-2xl border border-primary/25">
-              <Image
-                src="/images/profile.png"
-                alt="Webi Muleta"
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover transition-transform duration-700 hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/50 via-transparent to-transparent" />
-            </div>
+            <Image
+              src="/images/profile.png"
+              alt="Portrait of Webi Muleta"
+              fill
+              sizes="(max-width: 768px) 100vw, 40vw"
+              className="object-cover"
+            />
           </motion.div>
 
-          {/* Text with left crimson accent */}
           <motion.div
-            initial={{ opacity: 0, x: 24 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.15 }}
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             viewport={{ once: true }}
-            className="space-y-6 sm:space-y-8 border-l-2 border-primary pl-5 sm:pl-6 md:pt-4"
           >
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-foreground leading-tight">
-              Developer.<br />Builder.<br />Problem solver.
-            </h2>
+            <p className="font-display text-2xl sm:text-3xl lg:text-[2.5rem] font-semibold leading-[1.15] tracking-tight">
+              I&apos;m a full stack developer who cares about the whole product — the
+              API, the data, and the last pixel of the interface.
+            </p>
 
-            <div className="space-y-5 text-base text-muted-foreground leading-relaxed">
+            <div className="mt-8 space-y-5 text-base sm:text-lg leading-relaxed text-muted-foreground">
               <p>
-                I&apos;m a Computer Science and Engineering graduate from Adama Science and
-                Technology University, where I finished with Very High Distinction, and a
-                Full Stack Developer with a passion for building impactful digital
-                products. I specialize in crafting fast, accessible, and beautifully
-                designed web applications — from the API layer all the way to the UI.
+                I&apos;m currently building at{" "}
+                <a href="https://synheart.ai" target="_blank" rel="noopener noreferrer" className="font-semibold text-foreground underline decoration-brand decoration-2 underline-offset-4 hover:text-brand-text">
+                  Synheart
+                </a>
+                , a privacy-first human-state platform. I graduated in Computer Science and
+                Engineering from Adama Science and Technology University with Very High
+                Distinction.
               </p>
               <p>
-                I&apos;m currently a Full Stack Developer at{" "}
-                <a href="https://synheart.ai" target="_blank" rel="noopener noreferrer" className="font-semibold text-foreground hover:text-primary underline decoration-primary/40 underline-offset-4 transition-colors">Synheart</a>,
-                building a privacy-first human-state platform. With experience ranging
-                from human-state platforms and B2B marketplaces to consumer apps, I bring
-                both technical depth and product thinking to every project I work on.
-              </p>
-              <p>
-                When I&apos;m not building, I&apos;m exploring new technologies, contributing to
-                open source, and sharpening my problem-solving skills on LeetCode.
+                My work spans human-state platforms, B2B marketplaces, AI tooling, and
+                consumer apps. Outside of work I explore new tech, contribute to open source,
+                and keep my problem-solving sharp on LeetCode.
               </p>
             </div>
 
-            <div className="flex items-center gap-3 flex-wrap">
-              <a
-                href="mailto:webimuleta01@gmail.com"
-                className="text-sm font-semibold text-primary hover:underline underline-offset-4"
-              >
-                webimuleta01@gmail.com
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a href={`mailto:${links.email}`} className="inline-flex h-11 items-center rounded-full bg-foreground px-5 text-sm font-semibold text-background hover:opacity-90 transition-opacity">
+                Email me
               </a>
-              <span className="text-border select-none">·</span>
-              <a
-                href={links.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
-              >
+              <a href={links.github} target="_blank" rel="noopener noreferrer" className="inline-flex h-11 items-center rounded-full border-2 border-foreground px-5 text-sm font-semibold hover:bg-foreground hover:text-background transition-colors">
                 GitHub
               </a>
-              <span className="text-border select-none">·</span>
-              <a
-                href={links.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
-              >
+              <a href={links.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex h-11 items-center rounded-full border-2 border-foreground px-5 text-sm font-semibold hover:bg-foreground hover:text-background transition-colors">
                 LinkedIn
               </a>
             </div>
+
+            <dl className="mt-12 grid grid-cols-3 gap-4 border-t-2 border-foreground pt-8">
+              {stats.map((stat) => (
+                <div key={stat.label}>
+                  <dt className="sr-only">{stat.label}</dt>
+                  <dd className="font-display text-5xl sm:text-6xl font-extrabold tracking-[-0.05em] leading-none">
+                    {stat.value}
+                  </dd>
+                  <p aria-hidden className="mt-2 text-sm text-muted-foreground leading-snug">{stat.label}</p>
+                </div>
+              ))}
+            </dl>
           </motion.div>
         </div>
-
-        {/* Stats row */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-3 gap-4 mt-20 pt-10 border-t border-border"
-        >
-          {stats.map((stat, i) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
-              viewport={{ once: true }}
-              className="text-center space-y-1"
-            >
-              <p className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-primary leading-none">
-                {stat.value}
-              </p>
-              <p className="text-xs sm:text-sm text-muted-foreground leading-snug pt-2">
-                {stat.label}
-              </p>
-            </motion.div>
-          ))}
-        </motion.div>
       </div>
     </section>
   )

@@ -7,8 +7,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: "Full Stack Developer specializing in React, Next.js, and building impactful digital products.",
     start_url: "/",
     display: "standalone",
-    background_color: "#100F0F",
-    theme_color: "#C44B4B",
+    background_color: "#FFF4E6",
+    theme_color: "#FF5B2E",
     icons: [{ src: "/favicon.ico", sizes: "any", type: "image/x-icon" }],
   }
 }

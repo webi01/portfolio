@@ -134,7 +134,7 @@ export default function ResumePage() {
       <div className="print:hidden flex justify-center pt-8 pb-4">
         <button
           onClick={() => window.print()}
-          className="flex items-center gap-2 bg-[#C44B4B] hover:bg-[#a83535] text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-colors"
+          className="flex items-center gap-2 bg-[#B8360F] hover:bg-[#8f2a0b] text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-colors"
         >
           <Printer className="h-4 w-4" />
           Save as PDF
@@ -147,52 +147,52 @@ export default function ResumePage() {
         style={{ width: "210mm", height: "297mm", padding: "14mm 16mm" }}
       >
         {/* ── Header ── */}
-        <header className="mb-6 pb-5 border-b-2 border-[#C44B4B] cv-header">
+        <header className="mb-6 pb-5 border-b-2 border-[#B8360F] cv-header">
           <h1 className="font-serif text-[32px] font-black tracking-tight text-[#100F0F] leading-none mb-1">
             Webi Muleta
           </h1>
-          <p className="text-[13px] font-semibold tracking-[0.18em] uppercase text-[#C44B4B] mb-3">
+          <p className="text-[13px] font-semibold tracking-[0.18em] uppercase text-[#B8360F] mb-3">
             Full Stack Developer
           </p>
           <div className="flex flex-wrap gap-x-5 gap-y-1 text-[11px] text-[#4A4440]">
             <a
               href={`mailto:${contact.email}`}
-              className="hover:text-[#C44B4B]"
+              className="hover:text-[#B8360F]"
             >
               {contact.email}
             </a>
-            <span className="text-[#C44B4B]">·</span>
+            <span className="text-[#B8360F]">·</span>
             <a
               href={`https://${contact.website}`}
-              className="hover:text-[#C44B4B]"
+              className="hover:text-[#B8360F]"
             >
               {contact.website}
             </a>
-            <span className="text-[#C44B4B]">·</span>
+            <span className="text-[#B8360F]">·</span>
             <a
               href={`https://${contact.github}`}
-              className="hover:text-[#C44B4B]"
+              className="hover:text-[#B8360F]"
             >
               {contact.github}
             </a>
-            <span className="text-[#C44B4B]">·</span>
+            <span className="text-[#B8360F]">·</span>
             <a
               href={`https://${contact.linkedin}`}
-              className="hover:text-[#C44B4B]"
+              className="hover:text-[#B8360F]"
             >
               {contact.linkedin}
             </a>
-            <span className="text-[#C44B4B]">·</span>
+            <span className="text-[#B8360F]">·</span>
             <a
               href={`https://${contact.telegram}`}
-              className="hover:text-[#C44B4B]"
+              className="hover:text-[#B8360F]"
             >
               {contact.telegram}
             </a>
-            <span className="text-[#C44B4B]">·</span>
+            <span className="text-[#B8360F]">·</span>
             <a
               href={`https://${contact.leetcode}`}
-              className="hover:text-[#C44B4B]"
+              className="hover:text-[#B8360F]"
             >
               {contact.leetcode}
             </a>
@@ -223,7 +223,7 @@ export default function ResumePage() {
                     <span className="text-[12.5px] font-bold text-[#100F0F]">
                       {exp.role}
                     </span>
-                    <span className="text-[11px] text-[#C44B4B] font-semibold">
+                    <span className="text-[11px] text-[#B8360F] font-semibold">
                       {" "}
                       · {exp.company}
                     </span>
@@ -238,7 +238,7 @@ export default function ResumePage() {
                       key={i}
                       className="flex gap-2 text-[11px] text-[#3A3330] leading-snug"
                     >
-                      <span className="text-[#C44B4B] mt-[3px] shrink-0">
+                      <span className="text-[#B8360F] mt-[3px] shrink-0">
                         ›
                       </span>
                       <span>{point}</span>
@@ -262,7 +262,7 @@ export default function ResumePage() {
                   </span>
                   <a
                     href={`https://${p.url}`}
-                    className="text-[10px] text-[#C44B4B] hover:underline"
+                    className="text-[10px] text-[#B8360F] hover:underline"
                   >
                     {p.url}
                   </a>
@@ -296,7 +296,7 @@ export default function ResumePage() {
                     <span className="text-[12.5px] font-bold text-[#100F0F]">
                       {edu.degree}
                     </span>
-                    <span className="text-[11px] text-[#C44B4B] font-semibold">
+                    <span className="text-[11px] text-[#B8360F] font-semibold">
                       {" "}
                       · {edu.school}
                     </span>
@@ -323,7 +323,7 @@ export default function ResumePage() {
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex items-center gap-3 mb-2">
-      <h2 className="text-[10px] font-black tracking-[0.22em] uppercase text-[#C44B4B] whitespace-nowrap">
+      <h2 className="text-[10px] font-black tracking-[0.22em] uppercase text-[#B8360F] whitespace-nowrap">
         {children}
       </h2>
       <div className="flex-1 h-px bg-[#E8E3DE]" />

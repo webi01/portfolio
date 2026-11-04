@@ -43,11 +43,11 @@ export default function Home() {
       />
       <Navbar />
       <HeroSection />
-      <AboutSection />
-      <ExperienceSection />
-      <EducationSection />
-      <SkillsSection />
       <ProjectsSection />
+      <ExperienceSection />
+      <AboutSection />
+      <SkillsSection />
+      <EducationSection />
       <ContactSection />
       <Footer />
     </main>

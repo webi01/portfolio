@@ -1,258 +1,116 @@
 "use client"
 
 import { useState } from "react"
-import { motion } from "framer-motion"
-import { ArrowUpRight, Github } from "lucide-react"
 import Image from "next/image"
+import { motion } from "framer-motion"
+import { ArrowUpRight } from "lucide-react"
+import { SectionHeading } from "@/components/SectionHeading"
+import { projects, type Project } from "@/lib/content"
+import { cn } from "@/lib/utils"
 
-type Project = {
-  number: string
-  title: string
-  description: string
-  image?: string
-  tags: string[]
-  liveUrl?: string
-  githubUrl?: string
-  /** Extra visible links, e.g. a product's site and its app */
-  links?: { label: string; href: string }[]
-  company?: string
-}
-
-const projects: Project[] = [
-  {
-    number: "01",
-    title: "Synheart",
-    company: "Synheart",
-    description:
-      "A privacy-first human-state platform that turns biosignals into structured signals like stress, focus, and cognitive load. I build product surfaces across the Synheart product family.",
-    tags: ["Next.js", "TypeScript", "Tailwind CSS"],
-    liveUrl: "https://synheart.ai",
-    links: [{ label: "synheart.ai", href: "https://synheart.ai" }],
-  },
-  {
-    number: "02",
-    title: "Synheart Platform",
-    company: "Synheart",
-    description:
-      "The organization dashboard where teams manage their org, members, and access across Synheart.",
-    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Dashboards"],
-    liveUrl: "https://platform.synheart.ai",
-    links: [{ label: "platform.synheart.ai", href: "https://platform.synheart.ai" }],
-  },
-  {
-    number: "03",
-    title: "Synapse",
-    company: "Synheart",
-    description:
-      "Part of the Synheart product family — I worked on both its public site and its web app.",
-    tags: ["Next.js", "TypeScript", "Tailwind CSS"],
-    liveUrl: "https://synapse.work",
-    links: [
-      { label: "synapse.work", href: "https://synapse.work" },
-      { label: "synapse.synheart.ai", href: "https://synapse.synheart.ai" },
-    ],
-  },
-  {
-    number: "04",
-    title: "Intent",
-    description:
-      "A desktop AI agent platform that puts your computer on autopilot. Helps professionals build tailored automation systems to solve repetitive problems — just type what you want done and Intent handles the rest.",
-    image: "/images/intent.png",
-    tags: ["AI Agent", "Desktop App", "Automation", "Next.js", "TypeScript"],
-    liveUrl: "https://intentt.vercel.app/",
-  },
-  {
-    number: "05",
-    title: "Revcom",
-    description:
-      "Ethiopia's #1 B2B procurement marketplace connecting buyers with 200+ verified suppliers. Features live procurement requests, real-time quote management, bulk product catalog, verified seller onboarding, and escrow-protected payments.",
-    image: "/images/revcom.png",
-    tags: ["Next.js", "Node.js", "MongoDB", "REST API", "JavaScript"],
-    liveUrl: "https://revecom.vercel.app/",
-  },
-  {
-    number: "06",
-    title: "SymDoc",
-    description:
-      "Generate, refine, and publish high-quality system prompts for AI agents. Create with AI assistance, iterate in real-time, and share your best work with the community.",
-    image: "/images/symdoc.png",
-    tags: ["Next.js", "TypeScript", "Tailwind CSS", "MongoDb"],
-    liveUrl: "https://sym-doc.vercel.app/",
-  },
-  {
-    number: "07",
-    title: "Sitota",
-    description:
-      "Elevate your connections. Render custom brand assets instantly onto our luxurious, organic items with AI precision, and send comfort globally.",
-    image: "/images/sitota.png",
-    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Postgres"],
-    liveUrl: "https://sitota-nu.vercel.app/",
-  },
-]
-
-
-function ProjectRow({
-  project,
-  index,
-}: {
-  project: Project
-  index: number
-}) {
+function Visual({ project, featured }: { project: Project; featured: boolean }) {
   const [imgError, setImgError] = useState(false)
+  const showImage = project.image && !imgError
+  const panel = project.panel ?? { bg: "#111111", fg: "#FFF4E6" }
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.55, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-      viewport={{ once: true }}
-      className="group grid lg:grid-cols-[1fr_auto] gap-6 py-8 sm:py-10 border-b border-border last:border-b-0"
+    <div
+      className={cn(
+        "relative w-full overflow-hidden rounded-3xl",
+        featured ? "aspect-[4/3] md:aspect-[21/9]" : "aspect-[4/3]"
+      )}
+      style={showImage ? undefined : { backgroundColor: panel.bg, color: panel.fg }}
     >
-      <div className="flex gap-4 sm:gap-8 lg:gap-10 items-start">
-        {/* Large number */}
-        <span
-          aria-hidden
-          className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-none mt-0.5 select-none flex-shrink-0 w-12 sm:w-16 lg:w-20 tabular-nums transition-colors duration-300 text-primary/20 group-hover:text-primary/50"
-        >
-          {project.number}
-        </span>
-
-        {/* Content */}
-        <div className="flex-1 space-y-3 min-w-0">
-          <div className="flex items-start gap-3">
-            <h3 className="font-serif text-2xl sm:text-3xl font-bold text-foreground group-hover:text-primary transition-colors duration-200 leading-tight">
-              {project.liveUrl ? (
-                <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="hover:text-primary">
-                  {project.title}
-                </a>
-              ) : (
-                project.title
-              )}
-            </h3>
-            <div className="flex items-center gap-1.5 mt-1 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-200 flex-shrink-0">
-              {project.liveUrl && (
-                <a
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-1 rounded-md hover:bg-primary/10 text-primary transition-colors"
-                  aria-label={`Visit ${project.title}`}
-                >
-                  <ArrowUpRight className="h-4 w-4" />
-                </a>
-              )}
-              {project.githubUrl && (
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-1 rounded-md hover:bg-primary/10 text-muted-foreground hover:text-primary transition-colors"
-                  aria-label={`View code for ${project.title}`}
-                >
-                  <Github className="h-4 w-4" />
-                </a>
-              )}
-            </div>
-          </div>
-
-          {project.company && (
-            <p className="text-xs font-bold tracking-[0.18em] uppercase text-muted-foreground -mt-1">
-              Built at {project.company}
-            </p>
-          )}
-
-          <p className="text-muted-foreground text-sm leading-relaxed max-w-2xl">
-            {project.description}
-          </p>
-
-          {project.links && (
-            <ul className="flex flex-wrap gap-x-5 gap-y-2" aria-label={`${project.title} links`}>
-              {project.links.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group/link inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline underline-offset-4"
-                  >
-                    {link.label}
-                    <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
-                  </a>
-                </li>
-              ))}
-            </ul>
-          )}
-
-          <div className="flex flex-wrap gap-2 pt-1">
-            {project.tags.map((tag) => (
-              <span
-                key={tag}
-                className="text-xs font-medium px-2.5 py-1 rounded-full border border-border text-muted-foreground bg-card"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Thumbnail — revealed on hover, desktop only */}
-      {project.image && !imgError && (
-        <div className="relative hidden lg:block w-48 h-32 rounded-xl overflow-hidden border border-border flex-shrink-0 self-center opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-          <Image
-            src={project.image}
-            alt={`${project.title} screenshot`}
-            fill
-            sizes="192px"
-            className="object-cover"
-            onError={() => setImgError(true)}
-          />
+      {showImage ? (
+        <Image
+          src={project.image!}
+          alt={`${project.title} screenshot`}
+          fill
+          sizes={featured ? "(max-width: 768px) 100vw, 1200px" : "(max-width: 768px) 100vw, 600px"}
+          className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+          onError={() => setImgError(true)}
+        />
+      ) : (
+        <div className="absolute inset-0 flex items-end justify-between p-6 sm:p-10">
+          <span
+            className={cn(
+              "block font-display font-extrabold tracking-[-0.05em] leading-[0.85] transition-transform duration-700 ease-out group-hover:-translate-y-1",
+              featured ? "text-[clamp(3.5rem,11vw,10rem)]" : "text-[clamp(3rem,7vw,5.5rem)]"
+            )}
+          >
+            {project.title}
+          </span>
+          <ArrowUpRight className="h-8 w-8 sm:h-10 sm:w-10 shrink-0 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
         </div>
       )}
-    </motion.div>
+    </div>
+  )
+}
+
+function ProjectItem({ project, index }: { project: Project; index: number }) {
+  const featured = index === 0
+
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      viewport={{ once: true, margin: "-60px" }}
+      className={cn("group", featured && "md:col-span-2")}
+    >
+      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" tabIndex={-1} aria-hidden>
+        <Visual project={project} featured={featured} />
+      </a>
+
+      <div className="mt-6 flex flex-wrap items-center gap-3">
+        <h3 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight">
+          <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="hover:text-brand-text transition-colors">
+            {project.title}
+          </a>
+        </h3>
+        <span className="rounded-full bg-lime px-3 py-1 text-xs font-semibold text-ink">{project.tag}</span>
+        <span className="text-sm text-muted-foreground tabular-nums">{project.year}</span>
+      </div>
+
+      {project.company && (
+        <p className="mt-1 text-sm font-semibold text-muted-foreground">Built at {project.company}</p>
+      )}
+
+      <p className={cn("mt-3 text-base leading-relaxed text-muted-foreground", featured ? "max-w-3xl" : "max-w-xl")}>
+        {project.description}
+      </p>
+
+      <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2">
+        {(project.links ?? [{ label: "Visit site", href: project.liveUrl }]).map((link) => (
+          <a
+            key={link.href}
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 text-[15px] font-semibold text-brand-text underline decoration-2 underline-offset-4 decoration-transparent hover:decoration-current transition-colors"
+          >
+            {link.label}
+            <ArrowUpRight className="h-4 w-4" />
+          </a>
+        ))}
+        <span className="text-sm text-muted-foreground">{project.stack.join(" · ")}</span>
+      </div>
+    </motion.article>
   )
 }
 
 export function ProjectsSection() {
   return (
-    <section id="projects" className="py-16 sm:py-24 lg:py-32 bg-secondary/30 relative overflow-hidden">
-      {/* Watermark */}
-      <span
-        aria-hidden
-        className="pointer-events-none select-none absolute -top-4 -left-4 font-serif font-black leading-none text-foreground/[0.025]"
-        style={{ fontSize: "clamp(10rem, 28vw, 20rem)", zIndex: 0 }}
-      >
-        05
-      </span>
-
-      <div className="container mx-auto px-4 md:px-8 lg:px-12 relative z-10">
-
-        {/* Section label */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="mb-4"
-        >
-          <p className="text-xs font-bold tracking-[0.25em] uppercase text-muted-foreground mb-3">
-            Featured Projects
-          </p>
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
-            <h2 className="font-serif text-4xl sm:text-5xl font-bold text-foreground">
-              Selected Work
-            </h2>
-            <p className="text-muted-foreground text-sm max-w-xs leading-relaxed">
-              Things I&apos;ve built — from human-state platforms to AI agents and B2B marketplaces.
-            </p>
-          </div>
-          <div className="mt-5 h-px bg-border" />
-        </motion.div>
-
-        {/* Project list */}
-        <div>
+    <section id="work" className="py-20 sm:py-28 lg:py-36">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <SectionHeading
+          index="01"
+          title="Selected work"
+          kicker="Products I've built and shipped — from human-state platforms to AI agents and B2B marketplaces."
+        />
+        <div className="grid gap-x-8 gap-y-16 sm:gap-y-20 md:grid-cols-2">
           {projects.map((project, index) => (
-            <ProjectRow key={project.number} project={project} index={index} />
+            <ProjectItem key={project.title} project={project} index={index} />
           ))}
         </div>
       </div>

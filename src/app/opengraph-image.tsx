@@ -13,24 +13,23 @@ export default function OpengraphImage() {
           height: "100%",
           display: "flex",
           flexDirection: "column",
-          justifyContent: "center",
-          padding: "80px 96px",
-          background: "#100F0F",
-          color: "#F0EDEA",
+          justifyContent: "space-between",
+          padding: "64px 72px",
+          background: "#FF5B2E",
+          color: "#111111",
           fontFamily: "sans-serif",
         }}
       >
-        <div style={{ display: "flex", borderLeft: "6px solid #D65C5C", paddingLeft: 40, flexDirection: "column" }}>
-          <div style={{ fontSize: 28, letterSpacing: 8, textTransform: "uppercase", color: "#8A827C" }}>
-            Full Stack Developer
-          </div>
-          <div style={{ fontSize: 120, fontWeight: 800, lineHeight: 1.05, marginTop: 16 }}>Webi Muleta</div>
-          <div style={{ fontSize: 34, color: "#8A827C", marginTop: 28 }}>
-            Building accessible, pixel-perfect web products — from API to UI.
-          </div>
+        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 30 }}>
+          <span style={{ fontWeight: 800 }}>webi.</span>
+          <span style={{ display: "flex", background: "#111111", color: "#FFF4E6", borderRadius: 999, padding: "10px 24px", fontSize: 24 }}>
+            Now building at Synheart
+          </span>
         </div>
-        <div style={{ position: "absolute", right: 96, bottom: 72, fontSize: 64, fontWeight: 900, color: "#D65C5C" }}>
-          WM.
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <div style={{ fontSize: 190, fontWeight: 900, lineHeight: 0.85, letterSpacing: -10 }}>WEBI</div>
+          <div style={{ fontSize: 190, fontWeight: 900, lineHeight: 0.85, letterSpacing: -10 }}>MULETA</div>
+          <div style={{ fontSize: 34, marginTop: 28 }}>Full stack developer — bold, fast web products.</div>
         </div>
       </div>
     ),

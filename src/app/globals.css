@@ -3,78 +3,64 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/*
+  Bold palette
+  - --brand is for fills only (orange on cream text fails contrast).
+  - --brand-text is the readable orange for text and links.
+  - Text on brand fills is always --ink (6.1:1).
+*/
 :root {
-  /* Carbon Light Mode */
-  --background: #FAF8F5;
-  --foreground: #100F0F;
+  --ink: #111111;
+  --cream: #FFF4E6;
+  --brand: #FF5B2E;
+  --lime: #C6F432;
+  --violet: #5B3DF5;
 
-  --card: #F2EFEB;
-  --card-foreground: #100F0F;
+  --background: var(--cream);
+  --foreground: var(--ink);
+  --card: #FBE7CF;
+  --card-foreground: var(--ink);
+  --popover: #FFFFFF;
+  --popover-foreground: var(--ink);
+  --primary: var(--brand);
+  --primary-foreground: var(--ink);
+  --brand-text: #B8360F;
+  --secondary: #FBE7CF;
+  --secondary-foreground: var(--ink);
+  --muted: #FBE7CF;
+  --muted-foreground: #5A5149;
+  --accent: #FBE7CF;
+  --accent-foreground: var(--ink);
+  --destructive: #C62828;
+  --destructive-foreground: #FFFFFF;
+  --border: #EAD5BC;
+  --input: #EAD5BC;
+  --ring: var(--ink);
 
-  --popover: #F2EFEB;
-  --popover-foreground: #100F0F;
-
-  --primary: #B23838;
-  --primary-foreground: #FAF8F5;
-
-  --secondary: #EAE6E0;
-  --secondary-foreground: #100F0F;
-
-  --muted: #E2DED8;
-  --muted-foreground: #6A625D;
-
-  --accent: #EAE6E0;
-  --accent-foreground: #100F0F;
-
-  --destructive: #D64545;
-  --destructive-foreground: #FAF8F5;
-
-  --border: #DDD8D2;
-  --input: #DDD8D2;
-  --ring: #B23838;
-
-  /* Skill accents — darkened for AA contrast on light surfaces */
-  --skill-crimson: #B23838;
-  --skill-teal: #2E7D77;
-  --skill-violet: #6B5BA8;
-
-  --radius: 0.375rem;
+  --radius: 0.75rem;
 }
 
 .dark {
-  /* Carbon Dark Mode */
-  --background: #100F0F;
-  --foreground: #F0EDEA;
-
-  --card: #181616;
-  --card-foreground: #F0EDEA;
-
-  --popover: #181616;
-  --popover-foreground: #F0EDEA;
-
-  /* #D65C5C on #100F0F = 5.05:1 (AA); dark text on primary fills = 5.05:1 */
-  --primary: #D65C5C;
-  --primary-foreground: #100F0F;
-
-  --secondary: #221F1F;
-  --secondary-foreground: #F0EDEA;
-
-  --muted: #1C1A1A;
-  --muted-foreground: #8A827C;
-
-  --accent: #221F1F;
-  --accent-foreground: #F0EDEA;
-
-  --destructive: #7F1D1D;
-  --destructive-foreground: #F0EDEA;
-
-  --border: #2E2A2A;
-  --input: #2E2A2A;
-  --ring: #D65C5C;
-
-  --skill-crimson: #D65C5C;
-  --skill-teal: #5CB8B2;
-  --skill-violet: #9B8EC4;
+  --background: #141210;
+  --foreground: var(--cream);
+  --card: #1E1B18;
+  --card-foreground: var(--cream);
+  --popover: #1E1B18;
+  --popover-foreground: var(--cream);
+  --primary: var(--brand);
+  --primary-foreground: var(--ink);
+  --brand-text: #FF6A3D;
+  --secondary: #1E1B18;
+  --secondary-foreground: var(--cream);
+  --muted: #1E1B18;
+  --muted-foreground: #B3A698;
+  --accent: #26221E;
+  --accent-foreground: var(--cream);
+  --destructive: #EF5350;
+  --destructive-foreground: var(--ink);
+  --border: #2E2924;
+  --input: #2E2924;
+  --ring: var(--brand);
 }
 
 @theme inline {
@@ -97,17 +83,30 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --radius-sm: calc(var(--radius) - 2px);
-  --radius-md: calc(var(--radius) - 1px);
+
+  --color-ink: var(--ink);
+  --color-cream: var(--cream);
+  --color-brand: var(--brand);
+  --color-brand-text: var(--brand-text);
+  --color-lime: var(--lime);
+  --color-violet: var(--violet);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-  --font-sans: var(--font-nunito-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-raleway), ui-sans-serif, system-ui, sans-serif;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 
   body {
@@ -116,24 +115,19 @@
     overflow-x: hidden;
   }
 
-  html {
-    scroll-behavior: smooth;
-  }
-
-  /* Keep anchored section headings clear of the fixed navbar */
   section[id] {
-    scroll-margin-top: 4rem;
+    scroll-margin-top: 4.5rem;
   }
 
   ::selection {
-    background-color: var(--primary);
-    color: var(--primary-foreground);
+    background-color: var(--brand);
+    color: var(--ink);
   }
 
   :focus-visible {
     outline: 2px solid var(--ring);
     outline-offset: 3px;
-    border-radius: 4px;
+    border-radius: 6px;
   }
 }
 
