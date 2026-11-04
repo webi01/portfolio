@@ -1,8 +1,5 @@
-const vercelProd = process.env.VERCEL_PROJECT_PRODUCTION_URL
-
 export const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  (vercelProd ? `https://${vercelProd}` : "https://webimuleta.dev")
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://webi-muleta.vercel.app"
 
 export const links = {
   email: "webimuleta01@gmail.com",

@@ -9,15 +9,51 @@ type Project = {
   number: string
   title: string
   description: string
-  image: string
+  image?: string
   tags: string[]
   liveUrl?: string
   githubUrl?: string
+  /** Extra visible links, e.g. a product's site and its app */
+  links?: { label: string; href: string }[]
+  company?: string
 }
 
 const projects: Project[] = [
   {
     number: "01",
+    title: "Synheart",
+    company: "Synheart",
+    description:
+      "A privacy-first human-state platform that turns biosignals into structured signals like stress, focus, and cognitive load. I build product surfaces across the Synheart product family.",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS"],
+    liveUrl: "https://synheart.ai",
+    links: [{ label: "synheart.ai", href: "https://synheart.ai" }],
+  },
+  {
+    number: "02",
+    title: "Synheart Platform",
+    company: "Synheart",
+    description:
+      "The organization dashboard where teams manage their org, members, and access across Synheart.",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Dashboards"],
+    liveUrl: "https://platform.synheart.ai",
+    links: [{ label: "platform.synheart.ai", href: "https://platform.synheart.ai" }],
+  },
+  {
+    number: "03",
+    title: "Synapse",
+    company: "Synheart",
+    description:
+      "Part of the Synheart product family — I worked on both its public site and its web app.",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS"],
+    liveUrl: "https://synapse.work",
+    links: [
+      { label: "synapse.work", href: "https://synapse.work" },
+      { label: "synapse.synheart.ai", href: "https://synapse.synheart.ai" },
+    ],
+  },
+  {
+    number: "04",
     title: "Intent",
     description:
       "A desktop AI agent platform that puts your computer on autopilot. Helps professionals build tailored automation systems to solve repetitive problems — just type what you want done and Intent handles the rest.",
@@ -26,7 +62,7 @@ const projects: Project[] = [
     liveUrl: "https://intentt.vercel.app/",
   },
   {
-    number: "02",
+    number: "05",
     title: "Revcom",
     description:
       "Ethiopia's #1 B2B procurement marketplace connecting buyers with 200+ verified suppliers. Features live procurement requests, real-time quote management, bulk product catalog, verified seller onboarding, and escrow-protected payments.",
@@ -35,7 +71,7 @@ const projects: Project[] = [
     liveUrl: "https://revecom.vercel.app/",
   },
   {
-    number: "03",
+    number: "06",
     title: "SymDoc",
     description:
       "Generate, refine, and publish high-quality system prompts for AI agents. Create with AI assistance, iterate in real-time, and share your best work with the community.",
@@ -44,7 +80,7 @@ const projects: Project[] = [
     liveUrl: "https://sym-doc.vercel.app/",
   },
   {
-    number: "04",
+    number: "07",
     title: "Sitota",
     description:
       "Elevate your connections. Render custom brand assets instantly onto our luxurious, organic items with AI precision, and send comfort globally.",
@@ -76,7 +112,7 @@ function ProjectRow({
         {/* Large number */}
         <span
           aria-hidden
-          className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-none mt-0.5 select-none flex-shrink-0 transition-colors duration-300 text-primary/20 group-hover:text-primary/50"
+          className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-none mt-0.5 select-none flex-shrink-0 w-12 sm:w-16 lg:w-20 tabular-nums transition-colors duration-300 text-primary/20 group-hover:text-primary/50"
         >
           {project.number}
         </span>
@@ -119,9 +155,33 @@ function ProjectRow({
             </div>
           </div>
 
+          {project.company && (
+            <p className="text-xs font-bold tracking-[0.18em] uppercase text-muted-foreground -mt-1">
+              Built at {project.company}
+            </p>
+          )}
+
           <p className="text-muted-foreground text-sm leading-relaxed max-w-2xl">
             {project.description}
           </p>
+
+          {project.links && (
+            <ul className="flex flex-wrap gap-x-5 gap-y-2" aria-label={`${project.title} links`}>
+              {project.links.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group/link inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline underline-offset-4"
+                  >
+                    {link.label}
+                    <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
 
           <div className="flex flex-wrap gap-2 pt-1">
             {project.tags.map((tag) => (
@@ -137,7 +197,7 @@ function ProjectRow({
       </div>
 
       {/* Thumbnail — revealed on hover, desktop only */}
-      {!imgError && (
+      {project.image && !imgError && (
         <div className="relative hidden lg:block w-48 h-32 rounded-xl overflow-hidden border border-border flex-shrink-0 self-center opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
           <Image
             src={project.image}
@@ -183,7 +243,7 @@ export function ProjectsSection() {
               Selected Work
             </h2>
             <p className="text-muted-foreground text-sm max-w-xs leading-relaxed">
-              Things I&apos;ve built — from AI agents to B2B platforms.
+              Things I&apos;ve built — from human-state platforms to AI agents and B2B marketplaces.
             </p>
           </div>
           <div className="mt-5 h-px bg-border" />
