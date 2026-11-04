@@ -3,6 +3,7 @@ import { Bricolage_Grotesque, Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { siteUrl } from "@/lib/site";
+import { SmoothScroll } from "@/components/SmoothScroll";
 
 const bricolage = Bricolage_Grotesque({
   variable: "--font-bricolage",
@@ -62,8 +63,8 @@ export default function RootLayout({
           attribute="class"
           defaultTheme="light"
           enableSystem
-          disableTransitionOnChange
         >
+          <SmoothScroll />
           {children}
         </ThemeProvider>
       </body>

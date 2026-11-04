@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
 import { SectionHeading } from "@/components/SectionHeading"
+import { DrawLine, RevealText, ease } from "@/components/motion"
 import { experiences } from "@/lib/content"
 
 export function ExperienceSection() {
@@ -11,15 +12,16 @@ export function ExperienceSection() {
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading index="02" title="Experience" kicker="Where I've built, shipped, and grown." />
 
-        <div className="border-t-2 border-foreground">
+        <DrawLine className="h-0.5 bg-foreground" />
+        <div>
           {experiences.map((exp, i) => (
+            <div key={exp.company}>
             <motion.div
-              key={exp.company}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.9, delay: 0.1, ease }}
               viewport={{ once: true, margin: "-60px" }}
-              className="grid gap-4 py-10 sm:py-12 md:grid-cols-[220px_1fr] md:gap-10 border-b border-border last:border-b-0"
+              className="grid gap-4 py-10 sm:py-12 md:grid-cols-[220px_1fr] md:gap-10"
             >
               <div className="flex flex-wrap items-center gap-3 md:flex-col md:items-start">
                 <span className="font-display text-xl font-bold tabular-nums">{exp.date}</span>
@@ -33,9 +35,12 @@ export function ExperienceSection() {
               </div>
 
               <div>
-                <h3 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-[-0.04em] leading-none">
-                  {exp.company}
-                </h3>
+                <RevealText
+                  as="h3"
+                  text={exp.company}
+                  delay={0.15}
+                  className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-[-0.04em] leading-none"
+                />
                 <p className="mt-3 font-display text-xl font-semibold">{exp.role}</p>
                 <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted-foreground">{exp.description}</p>
 
@@ -47,10 +52,10 @@ export function ExperienceSection() {
                           href={product.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 rounded-full bg-ink px-4 py-2 text-sm font-semibold text-cream hover:bg-brand hover:text-ink transition-colors dark:bg-cream dark:text-ink dark:hover:bg-brand"
+                          className="group/p inline-flex items-center gap-1 rounded-full bg-ink px-4 py-2 text-sm font-semibold text-cream hover:bg-brand hover:text-ink hover:-translate-y-0.5 transition-all duration-300 dark:bg-cream dark:text-ink dark:hover:bg-brand"
                         >
                           {product.href.replace("https://", "")}
-                          <ArrowUpRight className="h-3.5 w-3.5" />
+                          <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover/p:rotate-45" />
                         </a>
                       </li>
                     ))}
@@ -60,6 +65,8 @@ export function ExperienceSection() {
                 <p className="mt-5 text-sm text-muted-foreground">{exp.skills.join(" · ")}</p>
               </div>
             </motion.div>
+            {i < experiences.length - 1 && <DrawLine className="h-px bg-border" />}
+            </div>
           ))}
         </div>
       </div>

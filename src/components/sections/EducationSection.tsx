@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import { SectionHeading } from "@/components/SectionHeading"
+import { DrawLine, ease } from "@/components/motion"
 import { education } from "@/lib/content"
 
 export function EducationSection() {
@@ -10,15 +11,16 @@ export function EducationSection() {
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading index="05" title="Education" kicker="Formal foundations plus intensive, hands-on training." />
 
-        <div className="border-t-2 border-foreground">
+        <DrawLine className="h-0.5 bg-foreground" />
+        <div>
           {education.map((edu, i) => (
+            <div key={edu.school}>
             <motion.div
-              key={edu.school}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.9, delay: 0.1, ease }}
               viewport={{ once: true, margin: "-60px" }}
-              className="grid gap-3 py-8 sm:py-10 md:grid-cols-[220px_1fr] md:gap-10 border-b border-border last:border-b-0"
+              className="grid gap-3 py-8 sm:py-10 md:grid-cols-[220px_1fr] md:gap-10"
             >
               <div className="flex flex-wrap items-center gap-3 md:flex-col md:items-start">
                 <span className="font-display text-xl font-bold tabular-nums">{edu.date}</span>
@@ -35,6 +37,8 @@ export function EducationSection() {
                 <p className="mt-3 max-w-3xl text-base leading-relaxed text-muted-foreground">{edu.description}</p>
               </div>
             </motion.div>
+            {i < education.length - 1 && <DrawLine className="h-px bg-border" />}
+            </div>
           ))}
         </div>
       </div>

@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { RevealText, ease } from "@/components/motion"
 
 export function SectionHeading({
   index,
@@ -12,22 +13,30 @@ export function SectionHeading({
   kicker?: string
 }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      viewport={{ once: true, margin: "-80px" }}
-      className="mb-12 sm:mb-16 flex flex-col gap-5 md:flex-row md:items-end md:justify-between"
-    >
+    <div className="mb-12 sm:mb-16 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
       <h2 className="font-display font-extrabold tracking-[-0.04em] leading-[0.9] text-[clamp(3rem,9vw,7.5rem)]">
-        <span className="block text-sm font-semibold tracking-normal text-muted-foreground mb-4 font-sans">
+        <motion.span
+          initial={{ opacity: 0, x: -12 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, ease }}
+          viewport={{ once: true }}
+          className="block text-sm font-semibold tracking-normal text-muted-foreground mb-4 font-sans"
+        >
           ({index})
-        </span>
-        {title}
+        </motion.span>
+        <RevealText text={title} by="letter" stagger={0.03} />
       </h2>
       {kicker && (
-        <p className="max-w-sm text-base leading-relaxed text-muted-foreground md:pb-3">{kicker}</p>
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3, ease }}
+          viewport={{ once: true }}
+          className="max-w-sm text-base leading-relaxed text-muted-foreground md:pb-3"
+        >
+          {kicker}
+        </motion.p>
       )}
-    </motion.div>
+    </div>
   )
 }
