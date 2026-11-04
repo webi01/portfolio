@@ -1,25 +1,38 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { MapPin } from "lucide-react"
+import { ArrowUpRight, MapPin } from "lucide-react"
+import { synheartProducts } from "@/lib/site"
 
-const experiences = [
+type Experience = {
+  role: string
+  company: string
+  location: string
+  date: string
+  current: boolean
+  description: string
+  skills: string[]
+  products?: { name: string; href: string }[]
+}
+
+const experiences: Experience[] = [
   {
     role: "Full Stack Developer",
     company: "Synheart",
     location: "Remote",
-    date: "2026",
-    current: false,
+    date: "2026 — Present",
+    current: true,
     description:
-      "Built product surfaces for a privacy-first human-state platform that turns biosignals into structured signals like stress, focus, and cognitive load. Developed platform.synheart.ai — the organization dashboard where teams manage their org, members, and access — and worked on Life, the companion desktop app that captures user state and hosts real-time chat.",
+      "Building product surfaces for a privacy-first human-state platform that turns biosignals into structured signals like stress, focus, and cognitive load. I work across the Synheart product family — the synheart.ai site, Synapse, and platform.synheart.ai, the organization dashboard where teams manage their org, members, and access — as well as Life, the companion desktop app that captures user state and hosts real-time chat.",
     skills: ["Next.js", "TypeScript", "Tailwind CSS", "Desktop App", "Real-time Chat", "Dashboards"],
+    products: synheartProducts,
   },
   {
     role: "Freelance Full Stack Developer",
     company: "Tech for Africa",
     location: "Remote",
     date: "2025",
-    current: true,
+    current: false,
     description:
       "Built and maintained modern, responsive web interfaces using Next.js and Tailwind CSS. Focused on component reusability, performance optimization, and seamless API integration to deliver high-quality user experiences for African-focused tech initiatives.",
     skills: ["Next.js", "Tailwind CSS", "TypeScript", "Responsive Design", "API Integration"],
@@ -128,6 +141,24 @@ export function ExperienceSection() {
                 <p className="text-muted-foreground text-sm leading-relaxed">
                   {exp.description}
                 </p>
+
+                {exp.products && (
+                  <ul className="flex flex-wrap gap-x-5 gap-y-2 pt-1" aria-label={`${exp.company} products`}>
+                    {exp.products.map((product) => (
+                      <li key={product.href}>
+                        <a
+                          href={product.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group/link inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline underline-offset-4 focus-visible:underline"
+                        >
+                          {product.href.replace("https://", "")}
+                          <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
 
                 <div className="flex flex-wrap gap-2 pt-1">
                   {exp.skills.map((skill) => (

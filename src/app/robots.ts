@@ -1,14 +1,9 @@
-import { MetadataRoute } from 'next'
- 
-export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://example.com' // Replace with your actual domain
+import { MetadataRoute } from "next"
+import { siteUrl } from "@/lib/site"
 
+export default function robots(): MetadataRoute.Robots {
   return {
-    rules: {
-      userAgent: '*',
-      allow: '/',
-      disallow: '/private/',
-    },
-    sitemap: `${baseUrl}/sitemap.xml`,
+    rules: { userAgent: "*", allow: "/" },
+    sitemap: `${siteUrl}/sitemap.xml`,
   }
 }

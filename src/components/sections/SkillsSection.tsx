@@ -6,28 +6,34 @@ const skillRows = [
   {
     category: "Frontend",
     skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Flutter", "Dart", "HTML & CSS"],
-    accent: "#C44B4B",
+    accent: "var(--skill-crimson)",
     direction: 1,
   },
   {
     category: "Backend",
     skills: ["Node.js", "Express", "Python", "PostgreSQL", "MongoDB", "REST APIs", "GraphQL", "JWT"],
-    accent: "#5CB8B2",
+    accent: "var(--skill-teal)",
     direction: -1,
   },
   {
     category: "Tools & Workflow",
     skills: ["Git", "Docker", "Linux", "Figma", "CI/CD", "Agile", "UI/UX Design", "VS Code", "Vercel"],
-    accent: "#9B8EC4",
+    accent: "var(--skill-violet)",
     direction: 1,
   },
 ]
 
 function SkillScrollRow({ row }: { row: (typeof skillRows)[0] }) {
   const repeated = [...row.skills, ...row.skills, ...row.skills, ...row.skills]
+  const tint = (pct: number) => `color-mix(in srgb, ${row.accent} ${pct}%, transparent)`
 
   return (
+    <>
+    <ul className="sr-only" aria-label={`${row.category} skills`}>
+      {row.skills.map((skill) => <li key={skill}>{skill}</li>)}
+    </ul>
     <div
+      aria-hidden
       className="overflow-hidden py-1"
       style={{
         WebkitMaskImage:
@@ -46,9 +52,9 @@ function SkillScrollRow({ row }: { row: (typeof skillRows)[0] }) {
             key={i}
             className="inline-flex items-center px-5 py-2 rounded-full text-sm font-medium whitespace-nowrap border"
             style={{
-              borderColor: row.accent + "35",
+              borderColor: tint(21),
               color: row.accent,
-              backgroundColor: row.accent + "0D",
+              backgroundColor: tint(5),
             }}
           >
             {skill}
@@ -56,6 +62,7 @@ function SkillScrollRow({ row }: { row: (typeof skillRows)[0] }) {
         ))}
       </motion.div>
     </div>
+    </>
   )
 }
 
@@ -112,7 +119,7 @@ export function SkillsSection() {
                 >
                   {row.category}
                 </span>
-                <div className="flex-1 h-px" style={{ backgroundColor: row.accent + "25" }} />
+                <div className="flex-1 h-px" style={{ backgroundColor: `color-mix(in srgb, ${row.accent} 15%, transparent)` }} />
               </div>
 
               {/* Scrolling chips */}

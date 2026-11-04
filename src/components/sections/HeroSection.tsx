@@ -11,6 +11,8 @@ function CursorSpotlight() {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
+    const ok = window.matchMedia("(pointer: fine) and (prefers-reduced-motion: no-preference)").matches
+    if (!ok) return
     const onMove = (e: MouseEvent) => { setPos({ x: e.clientX, y: e.clientY }); setVisible(true) }
     const onLeave = () => setVisible(false)
     window.addEventListener("mousemove", onMove)
@@ -21,7 +23,7 @@ function CursorSpotlight() {
   return (
     <div
       aria-hidden
-      className="pointer-events-none fixed inset-0 z-[9999] overflow-hidden"
+      className="pointer-events-none fixed inset-0 z-40 overflow-hidden"
       style={{ opacity: visible ? 1 : 0, transition: "opacity 0.3s ease" }}
     >
       <div style={{

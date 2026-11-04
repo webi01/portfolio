@@ -33,6 +33,11 @@
   --input: #DDD8D2;
   --ring: #B23838;
 
+  /* Skill accents — darkened for AA contrast on light surfaces */
+  --skill-crimson: #B23838;
+  --skill-teal: #2E7D77;
+  --skill-violet: #6B5BA8;
+
   --radius: 0.375rem;
 }
 
@@ -47,8 +52,9 @@
   --popover: #181616;
   --popover-foreground: #F0EDEA;
 
-  --primary: #C44B4B;
-  --primary-foreground: #F0EDEA;
+  /* #D65C5C on #100F0F = 5.05:1 (AA); dark text on primary fills = 5.05:1 */
+  --primary: #D65C5C;
+  --primary-foreground: #100F0F;
 
   --secondary: #221F1F;
   --secondary-foreground: #F0EDEA;
@@ -64,7 +70,11 @@
 
   --border: #2E2A2A;
   --input: #2E2A2A;
-  --ring: #C44B4B;
+  --ring: #D65C5C;
+
+  --skill-crimson: #D65C5C;
+  --skill-teal: #5CB8B2;
+  --skill-violet: #9B8EC4;
 }
 
 @theme inline {
@@ -106,8 +116,36 @@
     overflow-x: hidden;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Keep anchored section headings clear of the fixed navbar */
+  section[id] {
+    scroll-margin-top: 4rem;
+  }
+
   ::selection {
-    background-color: #C44B4B;
-    color: #FAF8F5;
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

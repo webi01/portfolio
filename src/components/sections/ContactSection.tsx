@@ -2,12 +2,13 @@
 
 import { motion } from "framer-motion"
 import { ArrowUpRight, Github, Linkedin, Send, Code2 } from "lucide-react"
+import { links } from "@/lib/site"
 
 const socials = [
-  { label: "GitHub", href: "https://github.com/Dirac1235", icon: Github },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/webi", icon: Linkedin },
-  { label: "Telegram", href: "https://t.me/dirac02", icon: Send },
-  { label: "LeetCode", href: "https://leetcode.com/Dirac1235", icon: Code2 },
+  { label: "GitHub", href: links.github, icon: Github },
+  { label: "LinkedIn", href: links.linkedin, icon: Linkedin },
+  { label: "Telegram", href: links.telegram, icon: Send },
+  { label: "LeetCode", href: links.leetcode, icon: Code2 },
 ]
 
 export function ContactSection() {

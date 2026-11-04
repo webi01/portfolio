@@ -1,9 +1,11 @@
+import { links as site } from "@/lib/site"
+
 const links = [
-  { label: "GitHub", href: "https://github.com/Dirac1235" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/webi" },
-  { label: "LeetCode", href: "https://leetcode.com/Dirac1235" },
-  { label: "Telegram", href: "https://t.me/dirac02" },
-  { label: "Email", href: "mailto:webimuleta01@gmail.com" },
+  { label: "GitHub", href: site.github },
+  { label: "LinkedIn", href: site.linkedin },
+  { label: "LeetCode", href: site.leetcode },
+  { label: "Telegram", href: site.telegram },
+  { label: "Email", href: `mailto:${site.email}` },
 ]
 
 export function Footer() {

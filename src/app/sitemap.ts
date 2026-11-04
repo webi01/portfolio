@@ -1,32 +1,9 @@
-import { MetadataRoute } from 'next'
- 
+import { MetadataRoute } from "next"
+import { siteUrl } from "@/lib/site"
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://example.com' // Replace with your actual domain
- 
   return [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/#about`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/#projects`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/#contact`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.5,
-    },
+    { url: siteUrl, lastModified: new Date(), changeFrequency: "monthly", priority: 1 },
+    { url: `${siteUrl}/resume`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
   ]
 }

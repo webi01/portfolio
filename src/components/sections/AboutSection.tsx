@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import Image from "next/image"
+import { links } from "@/lib/site"
 
 const stats = [
   { value: "4+", label: "Years of experience" },
@@ -83,9 +84,11 @@ export function AboutSection() {
                 designed web applications — from the API layer all the way to the UI.
               </p>
               <p>
-                With experience ranging from e-commerce platforms and B2B marketplaces
-                to consumer apps, I bring both technical depth and product thinking
-                to every project I work on.
+                I&apos;m currently a Full Stack Developer at{" "}
+                <a href="https://synheart.ai" target="_blank" rel="noopener noreferrer" className="font-semibold text-foreground hover:text-primary underline decoration-primary/40 underline-offset-4 transition-colors">Synheart</a>,
+                building a privacy-first human-state platform. With experience ranging
+                from human-state platforms and B2B marketplaces to consumer apps, I bring
+                both technical depth and product thinking to every project I work on.
               </p>
               <p>
                 When I&apos;m not building, I&apos;m exploring new technologies, contributing to
@@ -102,7 +105,7 @@ export function AboutSection() {
               </a>
               <span className="text-border select-none">·</span>
               <a
-                href="https://github.com/Dirac1235"
+                href={links.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
@@ -111,7 +114,7 @@ export function AboutSection() {
               </a>
               <span className="text-border select-none">·</span>
               <a
-                href="https://www.linkedin.com/in/webi"
+                href={links.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"

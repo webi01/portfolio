@@ -8,23 +8,20 @@ import { ContactSection } from "@/components/sections/ContactSection"
 
 import { ExperienceSection } from "@/components/sections/ExperienceSection"
 import { EducationSection } from "@/components/sections/EducationSection"
+import { links, siteUrl } from "@/lib/site"
 
 export default function Home() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Webi Muleta",
-    "url": "https://webimuleta.dev",
-    "sameAs": [
-      "https://github.com/Dirac1235",
-      "https://www.linkedin.com/in/webi",
-      "https://t.me/dirac02",
-      "https://leetcode.com/Dirac1235",
-    ],
+    "url": siteUrl,
+    "sameAs": [links.github, links.linkedin, links.telegram, links.leetcode],
     "jobTitle": "Full Stack Developer",
     "worksFor": {
       "@type": "Organization",
-      "name": "Tech for Africa"
+      "name": "Synheart",
+      "url": "https://synheart.ai"
     },
     "alumniOf": [
       {

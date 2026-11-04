@@ -31,6 +31,7 @@ function ReadingProgress() {
 
   return (
     <div
+      aria-hidden
       className="absolute bottom-0 left-0 h-[2px] bg-primary transition-all duration-100 ease-out"
       style={{ width: `${progress}%` }}
     />
@@ -42,6 +43,13 @@ export function Navbar() {
   const [scrolled, setScrolled] = React.useState(false)
 
   React.useEffect(() => {
+    if (!isOpen) return
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setIsOpen(false)
+    window.addEventListener("keydown", onKey)
+    return () => window.removeEventListener("keydown", onKey)
+  }, [isOpen])
+
+  React.useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20)
     window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
@@ -49,6 +57,7 @@ export function Navbar() {
 
   return (
     <nav
+      aria-label="Main"
       className={cn(
         "fixed top-0 w-full z-50 transition-all duration-300",
         scrolled
@@ -93,7 +102,9 @@ export function Navbar() {
               variant="ghost"
               size="icon"
               onClick={() => setIsOpen(!isOpen)}
-              aria-label="Toggle menu"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isOpen}
+              aria-controls="mobile-menu"
             >
               {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
@@ -103,7 +114,7 @@ export function Navbar() {
 
       {/* Mobile menu */}
       {isOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-background border-b border-border shadow-lg animate-in slide-in-from-top-5">
+        <div id="mobile-menu" className="md:hidden absolute top-full left-0 w-full bg-background border-b border-border shadow-lg animate-in slide-in-from-top-5">
           <div className="container mx-auto px-4 py-6 flex flex-col gap-1">
             {navItems.map((item) => (
               <Link

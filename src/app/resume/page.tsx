@@ -29,7 +29,7 @@ const printStyles = `
 
 const contact = {
   email: "webimuleta01@gmail.com",
-  github: "github.com/Dirac1235",
+  github: "github.com/webi01",
   linkedin: "www.linkedin.com/in/webi",
   telegram: "t.me/dirac02",
   leetcode: "leetcode.com/Dirac1235",
@@ -40,12 +40,12 @@ const experience = [
   {
     role: "Full Stack Developer",
     company: "Synheart",
-    period: "2026",
+    period: "2026 — Present",
     location: "Remote",
     points: [
+      "Ship product surfaces for a privacy-first biosignal platform across synheart.ai, synapse.work, synapse.synheart.ai, and platform.synheart.ai.",
       "Built platform.synheart.ai, the organization dashboard where teams manage their org, members, and access.",
       "Worked on Life, the companion desktop app that captures user state and hosts real-time chat.",
-      "Shipped product surfaces for a privacy-first platform turning biosignals into stress, focus, and cognitive-load signals.",
     ],
   },
   {

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Raleway, Nunito_Sans } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { siteUrl } from "@/lib/site";
 
 const raleway = Raleway({
   variable: "--font-raleway",
@@ -18,39 +19,29 @@ const nunitoSans = Nunito_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://webimuleta.dev"),
+  metadataBase: new URL(siteUrl),
   title: {
     default: "Webi Muleta | Full Stack Developer",
     template: "%s | Webi Muleta"
   },
   description: "Full Stack Developer specializing in React, Next.js, and building impactful digital products.",
   keywords: ["Full Stack Developer", "React", "Next.js", "TypeScript", "Tailwind CSS", "Web Development", "Portfolio", "Webi Muleta"],
-  authors: [{ name: "Webi Muleta", url: "https://webimuleta.dev" }],
+  authors: [{ name: "Webi Muleta", url: siteUrl }],
   creator: "Webi Muleta",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://webimuleta.dev",
+    url: siteUrl,
     title: "Webi Muleta | Full Stack Developer",
     description: "Full Stack Developer specializing in React, Next.js, and building impactful digital products.",
     siteName: "Webi Muleta",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Webi Muleta — Full Stack Developer",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Webi Muleta | Full Stack Developer",
     description: "Full Stack Developer specializing in React, Next.js, and building impactful digital products.",
-    images: ["/og-image.jpg"],
     creator: "@dirac1235",
   },
-  manifest: "/manifest.json",
 };
 
 export const viewport = {

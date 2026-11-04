@@ -5,7 +5,17 @@ import { motion } from "framer-motion"
 import { ArrowUpRight, Github } from "lucide-react"
 import Image from "next/image"
 
-const projects = [
+type Project = {
+  number: string
+  title: string
+  description: string
+  image: string
+  tags: string[]
+  liveUrl?: string
+  githubUrl?: string
+}
+
+const projects: Project[] = [
   {
     number: "01",
     title: "Intent",
@@ -41,7 +51,6 @@ const projects = [
     image: "/images/sitota.png",
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Postgres"],
     liveUrl: "https://sitota-nu.vercel.app/",
-    githubUrl:""
   },
 ]
 
@@ -50,7 +59,7 @@ function ProjectRow({
   project,
   index,
 }: {
-  project: (typeof projects)[0]
+  project: Project
   index: number
 }) {
   const [imgError, setImgError] = useState(false)
@@ -76,9 +85,15 @@ function ProjectRow({
         <div className="flex-1 space-y-3 min-w-0">
           <div className="flex items-start gap-3">
             <h3 className="font-serif text-2xl sm:text-3xl font-bold text-foreground group-hover:text-primary transition-colors duration-200 leading-tight">
-              {project.title}
+              {project.liveUrl ? (
+                <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="hover:text-primary">
+                  {project.title}
+                </a>
+              ) : (
+                project.title
+              )}
             </h3>
-            <div className="flex items-center gap-1.5 mt-1 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-200 flex-shrink-0">
+            <div className="flex items-center gap-1.5 mt-1 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-200 flex-shrink-0">
               {project.liveUrl && (
                 <a
                   href={project.liveUrl}
@@ -126,7 +141,7 @@ function ProjectRow({
         <div className="relative hidden lg:block w-48 h-32 rounded-xl overflow-hidden border border-border flex-shrink-0 self-center opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
           <Image
             src={project.image}
-            alt={project.title}
+            alt={`${project.title} screenshot`}
             fill
             sizes="192px"
             className="object-cover"
@@ -168,7 +183,7 @@ export function ProjectsSection() {
               Selected Work
             </h2>
             <p className="text-muted-foreground text-sm max-w-xs leading-relaxed">
-              Things I&apos;ve built — from e-commerce to B2B platforms.
+              Things I&apos;ve built — from AI agents to B2B platforms.
             </p>
           </div>
           <div className="mt-5 h-px bg-border" />
