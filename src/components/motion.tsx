@@ -112,27 +112,35 @@ export function DrawLine({ className, delay = 0 }: { className?: string; delay?:
   )
 }
 
-/** Image/panel unveil: a clip-path wipe upward plus a slow settle in scale. */
+/**
+ * Image/panel unveil: a clip-path wipe upward plus a slow settle in scale.
+ * Visibility is observed on an unclipped wrapper — a fully clipped element
+ * never reports as intersecting, so it could never trigger itself.
+ */
 export function Unveil({ children, className }: { children: React.ReactNode; className?: string }) {
+  const ref = React.useRef<HTMLDivElement>(null)
+  const inView = useInView(ref, { once: true, margin: "0px 0px -10% 0px" })
   const reduce = useReducedMotion()
+  const shown = reduce || inView
+
   return (
-    <motion.div
-      initial={reduce ? false : { clipPath: "inset(100% 0% 0% 0% round 1.5rem)" }}
-      whileInView={{ clipPath: "inset(0% 0% 0% 0% round 1.5rem)" }}
-      transition={{ duration: 1.2, ease: easeInOut }}
-      viewport={{ once: true, margin: "-80px" }}
-      className={className}
-    >
+    <div ref={ref} className={className}>
       <motion.div
-        initial={reduce ? false : { scale: 1.18 }}
-        whileInView={{ scale: 1 }}
-        transition={{ duration: 1.6, ease }}
-        viewport={{ once: true, margin: "-80px" }}
+        initial={false}
+        animate={{ clipPath: shown ? "inset(0% 0% 0% 0% round 1.5rem)" : "inset(100% 0% 0% 0% round 1.5rem)" }}
+        transition={{ duration: reduce ? 0 : 1.2, ease: easeInOut }}
         className="h-full w-full"
       >
-        {children}
+        <motion.div
+          initial={false}
+          animate={{ scale: shown ? 1 : 1.18 }}
+          transition={{ duration: reduce ? 0 : 1.6, ease }}
+          className="h-full w-full"
+        >
+          {children}
+        </motion.div>
       </motion.div>
-    </motion.div>
+    </div>
   )
 }
 

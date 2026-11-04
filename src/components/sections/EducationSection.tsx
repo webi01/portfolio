@@ -9,7 +9,7 @@ export function EducationSection() {
   return (
     <section id="education" className="py-20 sm:py-28 lg:py-36">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <SectionHeading index="05" title="Education" kicker="Formal foundations plus intensive, hands-on training." />
+        <SectionHeading title="Education" kicker="Formal foundations plus intensive, hands-on training." />
 
         <DrawLine className="h-0.5 bg-foreground" />
         <div>

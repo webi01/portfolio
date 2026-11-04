@@ -16,8 +16,7 @@ export function ContactSection() {
   return (
     <section id="contact" className="bg-brand text-ink">
       <div className="mx-auto max-w-7xl px-5 sm:px-8 py-20 sm:py-28 lg:py-36">
-        <p className="text-sm font-semibold">(06) Contact</p>
-        <h2 className="mt-4 font-display font-extrabold uppercase tracking-[-0.055em] leading-[0.82] text-[clamp(3.5rem,13vw,11rem)]">
+        <h2 className="font-display font-extrabold uppercase tracking-[-0.055em] leading-[0.82] text-[clamp(3.5rem,13vw,11rem)]">
           <RevealText text="Let's build" by="letter" stagger={0.04} className="block" />
           <RevealText text="something." by="letter" stagger={0.04} delay={0.35} className="block" />
         </h2>

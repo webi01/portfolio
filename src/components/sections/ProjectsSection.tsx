@@ -109,7 +109,6 @@ export function ProjectsSection() {
     <section id="work" className="py-20 sm:py-28 lg:py-36">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading
-          index="01"
           title="Selected work"
           kicker="Products I've built and shipped — from human-state platforms to AI agents and B2B marketplaces."
         />

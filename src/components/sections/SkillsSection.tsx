@@ -11,7 +11,7 @@ export function SkillsSection() {
   return (
     <section id="skills" className="py-20 sm:py-28 lg:py-36 bg-ink text-cream">
       <div className="mx-auto max-w-7xl px-5 sm:px-8 [&_.text-muted-foreground]:text-cream/70">
-        <SectionHeading index="04" title="Toolkit" kicker="The technologies I reach for to take ideas from sketch to production." />
+        <SectionHeading title="Toolkit" kicker="The technologies I reach for to take ideas from sketch to production." />
 
         <div className="grid gap-12 md:grid-cols-3 md:gap-8">
           {skillGroups.map((group, i) => (

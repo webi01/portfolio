@@ -11,7 +11,7 @@ export function AboutSection() {
   return (
     <section id="about" className="py-20 sm:py-28 lg:py-36">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <SectionHeading index="03" title="About" />
+        <SectionHeading title="About" />
 
         <div className="grid gap-10 md:grid-cols-[5fr_7fr] lg:gap-20 items-start">
           <Unveil className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-brand md:sticky md:top-24">

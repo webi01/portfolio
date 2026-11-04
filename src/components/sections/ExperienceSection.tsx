@@ -10,7 +10,7 @@ export function ExperienceSection() {
   return (
     <section id="experience" className="py-20 sm:py-28 lg:py-36 bg-card">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <SectionHeading index="02" title="Experience" kicker="Where I've built, shipped, and grown." />
+        <SectionHeading title="Experience" kicker="Where I've built, shipped, and grown." />
 
         <DrawLine className="h-0.5 bg-foreground" />
         <div>
