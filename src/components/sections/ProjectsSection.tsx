@@ -61,7 +61,7 @@ function ProjectItem({ project, index }: { project: Project; index: number }) {
       whileInView="show"
       viewport={{ once: true, margin: "-80px" }}
       transition={{ staggerChildren: 0.08, delayChildren: index % 2 === 0 ? 0.35 : 0.5 }}
-      className={cn("group", featured && "md:col-span-2", !featured && index % 2 === 0 && "md:mt-24")}
+      className={cn("group", featured && "md:col-span-2")}
     >
       <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" tabIndex={-1} aria-hidden>
         <Visual project={project} featured={featured} />
