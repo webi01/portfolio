@@ -53,7 +53,9 @@ const item = {
 }
 
 function ProjectItem({ project, index }: { project: Project; index: number }) {
-  const featured = index === 0
+  // The first project is full width; so is a last project that would otherwise sit alone in its row
+  const rest = projects.length - 1
+  const featured = index === 0 || (index === projects.length - 1 && rest % 2 === 1)
 
   return (
     <motion.article

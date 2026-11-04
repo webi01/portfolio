@@ -84,16 +84,6 @@ export const projects: Project[] = [
     liveUrl: "https://sym-doc.vercel.app/",
     image: "/images/symdoc.png",
   },
-  {
-    title: "Sitota",
-    description:
-      "Render custom brand assets onto luxurious, organic gift items with AI precision — and send comfort globally.",
-    year: "2025",
-    tag: "E-commerce",
-    stack: ["Next.js", "TypeScript", "Postgres"],
-    liveUrl: "https://sitota-nu.vercel.app/",
-    image: "/images/sitota.png",
-  },
 ]
 
 export type Experience = {
