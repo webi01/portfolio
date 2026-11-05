@@ -56,7 +56,7 @@ export function RevealText({
             {(by === "letter" ? word.split("") : [word]).map((chunk, c) => {
               const d = delay + i++ * step
               return (
-                <span key={c} className="inline-block overflow-hidden align-bottom pb-[0.08em] -mb-[0.08em]">
+                <span key={c} className="inline-block overflow-hidden align-bottom pb-[0.08em] -mb-[0.08em] px-[0.06em] -mx-[0.06em]">
                   <motion.span
                     className="inline-block will-change-transform"
                     initial={{ y: "110%" }}

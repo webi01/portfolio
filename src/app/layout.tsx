@@ -1,20 +1,21 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Inter } from "next/font/google";
+import { Funnel_Display, Funnel_Sans } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { siteUrl } from "@/lib/site";
 import { SmoothScroll } from "@/components/SmoothScroll";
 
-const bricolage = Bricolage_Grotesque({
-  variable: "--font-bricolage",
+const funnelDisplay = Funnel_Display({
+  variable: "--font-funnel-display",
   subsets: ["latin"],
   weight: ["500", "600", "700", "800"],
   display: "swap",
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const funnelSans = Funnel_Sans({
+  variable: "--font-funnel-sans",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -58,7 +59,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${bricolage.variable} ${inter.variable} antialiased`}>
+      <body className={`${funnelDisplay.variable} ${funnelSans.variable} antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
